@@ -17,7 +17,7 @@ def fetch(year:int, day:int) -> list[str]:
     if isCached(year, day):
         return [x.strip() for x in open(gettempdir() + '/aoc-input-{}-{}.txt'.format(year, day), 'r').readlines()]
     else:
-        data = requests.get('https://adventofcode.com/{}/day/{}/input'.format(2023, 1), cookies={'session': COOKIE}).text
+        data = requests.get('https://adventofcode.com/{}/day/{}/input'.format(year, day), cookies={'session': COOKIE}).text
         open(gettempdir() + '/aoc-input-{}-{}.txt'.format(year, day), 'w').write(data)
         return [x.strip() for x in data.split('\n')][:-1]
         
